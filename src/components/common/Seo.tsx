@@ -12,6 +12,7 @@ const Seo = (props: IProps) => {
   return (
     <Head>
       <title>{title}</title>
+      <meta property="mplex:pageType" content={title} />
       {children}
     </Head>
   );
