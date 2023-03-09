@@ -1,4 +1,10 @@
+import { css } from '@emotion/react';
 import { ITheme } from '@emotion/styled';
+
+const flex = css`
+  display: flex;
+  align-items: center;
+`;
 
 export const theme: ITheme = {
   colors: {
@@ -29,4 +35,6 @@ export const theme: ITheme = {
     md: '18px',
     lg: '24px',
   },
+
+  flex,
 };

@@ -7,7 +7,7 @@ export default function Home() {
       <Seo title="Home">
         <meta name="home" content="movies & tv shows" />
       </Seo>
-      <div>Temporary home page</div>
+      <div style={{ height: '1000px' }}>Temporary home page</div>
     </>
   );
 }
