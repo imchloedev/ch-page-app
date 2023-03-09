@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { theme } from './theme';
 
 const globalStyle = css`
   @font-face {
@@ -41,9 +42,10 @@ const globalStyle = css`
   }
 
   body {
+    background-color: ${theme.colors.deepGrey};
     font-family: 'NanumSquareNeo';
     font-weight: 400;
-    color: #222;
+    color: ${theme.colors.white};
     font-size: 16px;
     font-style: normal;
     line-height: normal;
@@ -55,7 +57,7 @@ const globalStyle = css`
   }
 
   a {
-    color: #222;
+    color: ${theme.colors.white};
     text-decoration: none;
   }
 

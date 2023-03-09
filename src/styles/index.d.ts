@@ -1,4 +1,5 @@
 import '@emotion/styled';
+import { css } from '@emotion/react';
 
 declare module '@emotion/styled' {
   export interface ITheme {
@@ -24,5 +25,7 @@ declare module '@emotion/styled' {
       md: string;
       lg: string;
     };
+
+    flex: css;
   }
 }
