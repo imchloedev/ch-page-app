@@ -1,11 +1,11 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { Swiper } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
-import SwiperCore, { Navigation, Pagination, Scrollbar } from 'swiper';
-import styled from '@emotion/styled';
 
 interface ISlideProps {
   children: React.ReactNode;
