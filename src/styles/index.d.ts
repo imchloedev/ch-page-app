@@ -27,5 +27,7 @@ declare module '@emotion/styled' {
     };
 
     flex: css;
+    breakpoints: number[];
+    mq: string[];
   }
 }

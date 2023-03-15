@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from '@emotion/styled';
 import Button from './common/Button';
 import 'swiper/css';
+import { theme } from '@src/styles/theme';
 
 const Main = ({ mains }: any) => {
   SwiperCore.use([Autoplay]);
@@ -60,7 +61,7 @@ const SImgWrapper = styled.div`
       180deg,
       rgba(217, 217, 217, 0) 0%,
       rgba(34, 34, 34, 0.5) 66.15%,
-      #222222 100%
+      ${theme.colors.deepGrey} 100%
     );
     z-index: 10;
   }
@@ -86,14 +87,14 @@ const SImgTitleContainer = styled.div`
   p {
     margin-top: 20px;
     width: 50%;
-    height: 3.6em;
+    height: 5.4em;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
-    line-height: 1.2em;
+    line-height: 1.8em;
   }
 `;
 

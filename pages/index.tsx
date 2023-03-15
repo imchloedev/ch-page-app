@@ -30,7 +30,6 @@ export default function Home() {
       cacheTime: 50000,
     },
   ]);
-  console.log(results);
 
   return (
     <>
