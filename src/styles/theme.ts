@@ -6,13 +6,16 @@ const flex = css`
   align-items: center;
 `;
 
+const breakpoints = [576, 768, 992, 1200];
+const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
+
 export const theme: ITheme = {
   colors: {
     black: '#000000',
     white: '#FFFFFF',
     lightGrey: '#B0B0B0',
     middleGrey: '#717171',
-    deepGrey: '#222222',
+    deepGrey: '#151515',
     hoverGrey: '#DBDBDB',
     pink: '#FF09D6',
     middleBlue: '#4C83C2',
@@ -37,4 +40,6 @@ export const theme: ITheme = {
   },
 
   flex,
+  breakpoints,
+  mq,
 };

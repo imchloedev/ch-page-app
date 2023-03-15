@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 import type { AppProps } from 'next/app';
 import globalStyle from '@src/styles/globalStyle';
 import Nav from '@src/components/common/Nav';
+import Footer from '@src/components/common/Footer';
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Global styles={globalStyle} />
         <Nav />
         <Component {...pageProps} />
+        <Footer />
       </RecoilRoot>
     </QueryClientProvider>
   );

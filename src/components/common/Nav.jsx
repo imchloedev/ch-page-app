@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
-import { theme } from '@src/styles/theme';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import styled from '@emotion/styled';
+import { theme } from '@src/styles/theme';
 
 const Nav = () => {
   const headerRef = useRef(null);
@@ -12,7 +12,7 @@ const Nav = () => {
       const scrollTop = window.scrollY;
       // console.log(scrollTop);
       if (scrollTop > 0) {
-        headerRef.current.style.background = '#222';
+        headerRef.current.style.background = `${theme.colors.deepGrey}`;
       } else {
         headerRef.current.style.background = 'transparent';
       }
