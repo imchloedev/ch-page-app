@@ -1,16 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { ReactElement, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { theme } from '@src/styles/theme';
 
 const Nav = () => {
-  const headerRef = useRef(null);
+  const headerRef = useRef(null) as React.RefObject<HTMLDivElement>;
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
-      // console.log(scrollTop);
       if (scrollTop > 0) {
         headerRef.current.style.background = `${theme.colors.deepGrey}`;
       } else {
@@ -23,7 +22,9 @@ const Nav = () => {
     <SNavContainer ref={headerRef}>
       <SNavListWrapper>
         <div>
-          <Image src="/images/logo.png" width={80} height={16} alt="logo" />
+          <Link href="/">
+            <Image src="/images/logo.png" width={80} height={16} alt="logo" />
+          </Link>
         </div>
         <SNav>
           <ul>
@@ -40,8 +41,10 @@ const Nav = () => {
         </SNav>
       </SNavListWrapper>
       <SLeftWrapper>
-        <div>Search</div>
-        <div>Sign In</div>
+        <SSearch>Search</SSearch>
+        <div>
+          <Link href="/sign">Sign In</Link>
+        </div>
       </SLeftWrapper>
     </SNavContainer>
   );
@@ -77,4 +80,8 @@ const SNav = styled.nav`
 const SLeftWrapper = styled.div`
   ${theme.flex}
   gap: 10px;
+`;
+
+const SSearch = styled.div`
+  cursor: pointer;
 `;
