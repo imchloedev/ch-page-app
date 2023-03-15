@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import Button from './common/Button';
 import 'swiper/css';
 import { theme } from '@src/styles/theme';
+import Link from 'next/link';
 
 const Main = ({ mains }: any) => {
   SwiperCore.use([Autoplay]);
@@ -14,6 +15,7 @@ const Main = ({ mains }: any) => {
     loop: true,
     autoplay: {
       delay: 2500,
+      disableOnInteraction: false,
     },
   };
 
@@ -22,16 +24,18 @@ const Main = ({ mains }: any) => {
       <Swiper {...setting}>
         {mains?.main.map((list: any) => (
           <SwiperSlide key={list.id}>
-            <SImgWrapper>
-              <img src={list.poster} />
-            </SImgWrapper>
-            <SImgTitleContainer>
-              <img src={list.titleImg} />
-              <p>{list.info}</p>
-              <SBtnContainer>
-                <Button bgColor="white">More Info</Button>
-              </SBtnContainer>
-            </SImgTitleContainer>
+            <Link href="/">
+              <SImgWrapper>
+                <img src={list.poster} />
+              </SImgWrapper>
+              <SImgTitleContainer>
+                <img src={list.titleImg} />
+                <p>{list.info}</p>
+                <SBtnContainer>
+                  <Button bgColor="white">More Info</Button>
+                </SBtnContainer>
+              </SImgTitleContainer>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 import styled from '@emotion/styled';
 import Slider from './common/Slider';
@@ -10,10 +11,12 @@ const Trending = ({ trendings }: any) => {
       {trendings?.map((trending: IContent) => (
         <SwiperSlide key={trending.id}>
           <SPostWrapper>
-            <img
-              src={`https://image.tmdb.org/t/p/original/${trending.poster_path}`}
-              alt={trending.title}
-            />
+            <Link href="/">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${trending.poster_path}`}
+                alt={trending.title}
+              />
+            </Link>
           </SPostWrapper>
         </SwiperSlide>
       ))}
