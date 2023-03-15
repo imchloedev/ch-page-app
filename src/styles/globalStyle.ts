@@ -3,36 +3,30 @@ import { theme } from './theme';
 
 const globalStyle = css`
   @font-face {
-    font-family: 'NanumSquareNeo';
+    font-family: 'Lato';
     font-weight: 300;
     font-style: normal;
-    src: url('fonts/NanumSquareNeo-aLtttf') format('truetype');
+    src: url('/fonts/Lato-Light.ttf') format('truetype');
   }
 
   @font-face {
-    font-family: 'NanumSquareNeo';
-    src: url('/fonts/NanumSquareNeo-bRg.ttf') format('truetype');
+    font-family: 'Lato';
+    font-weight: 400;
+    src: url('/fonts/Lato-Regular.ttf') format('truetype');
   }
 
   @font-face {
-    font-family: 'NanumSquareNeo';
+    font-family: 'Lato';
     font-weight: 700;
     font-style: normal;
-    src: url('/fonts/NanumSquareNeo-cBd.ttf') format('truetype');
+    src: url('/fonts/Lato-Bold.ttf') format('truetype');
   }
 
   @font-face {
-    font-family: 'NanumSquareNeo';
+    font-family: 'Lato';
     font-weight: 800;
     font-style: normal;
-    src: url('/fonts/NanumSquareNeo-dEb.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'NanumSquareNeo';
-    font-weight: 900;
-    font-style: normal;
-    src: url('/fonts/NanumSquareNeo-eHv.ttf') format('truetype');
+    src: url('/fonts/Lato-Black.ttf') format('truetype');
   }
 
   * {
@@ -43,7 +37,7 @@ const globalStyle = css`
 
   body {
     background-color: ${theme.colors.deepGrey};
-    font-family: 'NanumSquareNeo';
+    font-family: 'Lato';
     font-weight: 400;
     color: ${theme.colors.white};
     font-size: 16px;
@@ -61,10 +55,16 @@ const globalStyle = css`
     text-decoration: none;
   }
 
+  button {
+    cursor: pointer;
+    border: none;
+  }
+
   input,
   button,
   textarea {
     outline: none;
+    font-family: 'Lato';
   }
 `;
 

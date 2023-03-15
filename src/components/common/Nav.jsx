@@ -23,7 +23,7 @@ const Nav = () => {
     <SNavContainer ref={headerRef}>
       <SNavListWrapper>
         <div>
-          <Image src="/images/logo.png" width={100} height={32} alt="logo" />
+          <Image src="/images/logo.png" width={80} height={16} alt="logo" />
         </div>
         <SNav>
           <ul>
@@ -52,18 +52,19 @@ export default Nav;
 const SNavContainer = styled.div`
   ${theme.flex}
   justify-content: space-between;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 80px;
   padding: 0 2vw;
   font-size: 14px;
+  z-index: 90;
 `;
 
 const SNavListWrapper = styled.div`
   ${theme.flex}
-  gap: 60px;
+  gap: 30px;
 `;
 
 const SNav = styled.nav`
