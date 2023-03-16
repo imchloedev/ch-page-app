@@ -11,6 +11,7 @@ declare module '@emotion/styled' {
       deepGrey: string;
       hoverGrey: string;
       pink: string;
+      yellow: string;
       middleBlue: string;
       blue: string;
       grayScale: string[];

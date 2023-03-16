@@ -83,7 +83,13 @@ const FOOTER_LISTS = [
 
 const SFooter = styled.footer`
   padding: 50px 2vw 80px 2vw;
+  margin-top: 100px;
   color: ${theme.colors.middleGrey};
+
+  ${theme.mq[3]} {
+    width: 1200px;
+    margin: 100px auto 0 auto;
+  }
 
   a {
     color: ${theme.colors.middleGrey};

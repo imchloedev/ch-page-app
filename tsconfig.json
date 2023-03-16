@@ -27,10 +27,11 @@
     }
   },
   "include": [
+    "src/types/custom.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/styles/GlobalStyles.ts"
+    "src/styles/index.d.ts"
   ],
   "exclude": ["node_modules"]
 }

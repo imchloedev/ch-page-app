@@ -18,6 +18,7 @@ export const theme: ITheme = {
     deepGrey: '#151515',
     hoverGrey: '#DBDBDB',
     pink: '#FF09D6',
+    yellow: '#f5c519',
     middleBlue: '#4C83C2',
     blue: '#4C5AEE',
     grayScale: ['#eee', '#ddd', '#555', '#888'],

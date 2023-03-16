@@ -6,6 +6,7 @@ import Button from './common/Button';
 import 'swiper/css';
 import { theme } from '@src/styles/theme';
 import Link from 'next/link';
+import InfoIcon from '../../public/icons/info.svg';
 
 const Main = ({ mains }: any) => {
   SwiperCore.use([Autoplay]);
@@ -32,7 +33,12 @@ const Main = ({ mains }: any) => {
                 <img src={list.titleImg} />
                 <p>{list.info}</p>
                 <SBtnContainer>
-                  <Button bgColor="white">More Info</Button>
+                  <Button bgColor="white">
+                    <SBtnInnerBox>
+                      <InfoIcon />
+                      More Info
+                    </SBtnInnerBox>
+                  </Button>
                 </SBtnContainer>
               </SImgTitleContainer>
             </Link>
@@ -51,7 +57,8 @@ const SMainContainer = styled.main`
   overflow: hidden;
 `;
 
-const SImgWrapper = styled.div`
+export const SImgWrapper = styled.div`
+  position: relative;
   height: 640px;
 
   &::after {
@@ -104,4 +111,16 @@ const SImgTitleContainer = styled.div`
 
 const SBtnContainer = styled.div`
   margin-top: 20px;
+`;
+
+const SBtnInnerBox = styled.div`
+  ${theme.flex}
+  gap: 3px;
+  justify-content: center;
+
+  svg {
+    path {
+      fill: ${theme.colors.black};
+    }
+  }
 `;

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-interface IButton {
+interface IButtonProps {
   children: React.ReactNode;
   bgColor: string;
 }
 
-const Button = ({ children, bgColor }: IButton) => {
+const Button = ({ children, bgColor }: IButtonProps) => {
   return <SButton bgColor={bgColor}>{children}</SButton>;
 };
 

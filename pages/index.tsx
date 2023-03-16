@@ -3,17 +3,17 @@ import { useQueries } from 'react-query';
 import styled from '@emotion/styled';
 import Seo from '@src/components/common/Seo';
 import Main from '@src/components/Main';
-import Trending from '@src/components/Trending';
+import TvShows from '@src/components/TvShows';
 import Movies from '../src/components/Movies';
-import { getTrending } from './api/trending/index';
+import { getTvShows } from './api/tvShows/index';
 import { getMovies } from './api/movies/index';
 import { getMain } from './api/mock/index';
 
 export default function Home() {
   const results = useQueries([
     {
-      queryKey: ['trending'],
-      queryFn: getTrending,
+      queryKey: ['tvShows'],
+      queryFn: getTvShows,
       staleTime: Infinity,
       cacheTime: 50000,
     },
@@ -38,8 +38,8 @@ export default function Home() {
       </Seo>
       <Main mains={results[2].data} />
       <SContents>
-        <SContentsTitle>Trending Now</SContentsTitle>
-        <Trending trendings={results[0].data} />
+        <SContentsTitle>TV Shows</SContentsTitle>
+        <TvShows tvShows={results[0].data} />
       </SContents>
       <SContents>
         <SContentsTitle>Movies</SContentsTitle>
