@@ -5,16 +5,16 @@ import styled from '@emotion/styled';
 import Slider from './common/Slider';
 import { IContent } from '../types/content';
 
-const Trending = ({ trendings }: any) => {
+const TvShows = ({ tvShows }: any) => {
   return (
     <Slider>
-      {trendings?.map((trending: IContent) => (
-        <SwiperSlide key={trending.id}>
+      {tvShows?.map((tvShow: IContent) => (
+        <SwiperSlide key={tvShow.id}>
           <SPostWrapper>
-            <Link href="/">
+            <Link href={`/view/2/tv?id=${tvShow.id}&title=${tvShow.name}`}>
               <img
-                src={`https://image.tmdb.org/t/p/original/${trending.poster_path}`}
-                alt={trending.title}
+                src={`https://image.tmdb.org/t/p/original/${tvShow.poster_path}`}
+                alt={tvShow.title}
               />
             </Link>
           </SPostWrapper>
@@ -24,7 +24,7 @@ const Trending = ({ trendings }: any) => {
   );
 };
 
-export default Trending;
+export default TvShows;
 
 export const SPostWrapper = styled.div`
   border-radius: 10px;
