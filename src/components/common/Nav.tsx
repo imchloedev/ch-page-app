@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from '@emotion/styled';
@@ -10,7 +10,7 @@ const Nav = () => {
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
-      if (scrollTop > 0) {
+      if (headerRef && scrollTop > 0) {
         headerRef.current.style.background = `${theme.colors.deepGrey}`;
       } else {
         headerRef.current.style.background = 'transparent';

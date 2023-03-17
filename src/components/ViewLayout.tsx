@@ -1,8 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 import styled from '@emotion/styled';
-import { theme } from '@src/styles/theme';
 import Star from '../../public/icons/star.svg';
+import { theme } from '@src/styles/theme';
 import { IContent } from '@src/types/content';
 import { MEDIA_TYPE } from '@src/constants';
 
@@ -11,14 +10,10 @@ interface IViewProps {
   mediaType: number;
 }
 
-// interface IGenre {
-//   id: number;
-//   name: string;
-// }
-
 const ViewLayout = ({ media, mediaType }: IViewProps) => {
   const { MOVIE } = MEDIA_TYPE;
   const type = Number(mediaType);
+  const isMovie = type === MOVIE;
 
   return (
     <div>
@@ -30,13 +25,13 @@ const ViewLayout = ({ media, mediaType }: IViewProps) => {
         <STitle>{mediaType == MOVIE ? media.title : media.name}</STitle>
         <SSubInfoWrapper>
           <p>
-            {type === MOVIE
+            {isMovie
               ? media.release_date?.split('-')[0]
               : media.first_air_date?.split('-')[0]}
           </p>
-          <p>{type === MOVIE ? '' : `Season ${media.number_of_seasons}`}</p>
+          <p>{isMovie ? '' : `Season ${media.number_of_seasons}`}</p>
           <p>
-            {type === MOVIE
+            {isMovie
               ? `${media.runtime}m`
               : ` ${media.number_of_episodes} episodes`}
           </p>

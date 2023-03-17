@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
 import Seo from '@src/components/common/Seo';
 import ViewLayout from '@src/components/ViewLayout';
+import { viewedListState } from '@src/atoms/recent';
 import { API_KEY, URL } from '@pages/api/tvShows';
-
 import { IContent } from '@src/types/content';
+import { MEDIA_TYPE } from '@src/constants';
 
-export interface IMediaProps {
-  query?: any;
+export interface IViewPgProps {
   title: string;
   media: IContent;
   mediaType: number;
 }
 
-const Movie = ({ mediaType, title, media }: IMediaProps) => {
+const ViewPage = ({ mediaType, title, media }: IViewPgProps) => {
+  const [viewedList, setViewedList] =
+    useRecoilState<IContent[]>(viewedListState);
+
+  useEffect(() => {
+    setViewedList([...viewedList, media]);
+  }, []);
+
   return (
     <div>
       <Seo title={title}>
@@ -25,15 +33,18 @@ const Movie = ({ mediaType, title, media }: IMediaProps) => {
   );
 };
 
-export default Movie;
+export default ViewPage;
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { mediaType }: any = context.params;
   const { query } = context;
   const { id } = query;
   const { title } = query;
+  const { MOVIE } = MEDIA_TYPE;
   const { data: results } = await axios.get(
-    `https://${URL}/movie/${id}?api_key=${API_KEY}`
+    `https://${URL}/${
+      Number(mediaType) === MOVIE ? 'movie' : 'tv'
+    }/${id}?api_key=${API_KEY}`
   );
   return {
     props: {
