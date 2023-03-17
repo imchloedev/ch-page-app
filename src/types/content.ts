@@ -29,3 +29,7 @@ export interface IContent {
   number_of_episodes?: number;
   number_of_seasons?: number;
 }
+
+export interface IContentList<T> {
+  content?: T[];
+}

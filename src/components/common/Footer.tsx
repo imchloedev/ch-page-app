@@ -1,7 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 import { theme } from '@src/styles/theme';
-import Link from 'next/link';
 
 const Footer = () => {
   return (

@@ -1,12 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from '@emotion/styled';
-import Button from './common/Button';
-import 'swiper/css';
+import Button from '@src/components/common/Button';
 import { theme } from '@src/styles/theme';
-import Link from 'next/link';
 import InfoIcon from '../../public/icons/info.svg';
+import 'swiper/css';
 
 const Main = ({ mains }: any) => {
   SwiperCore.use([Autoplay]);
