@@ -41,10 +41,8 @@ const Nav = () => {
         </SNav>
       </SNavListWrapper>
       <SLeftWrapper>
-        <SSearch>Search</SSearch>
-        <div>
-          <Link href="/sign">Sign In</Link>
-        </div>
+        <Link href="/search">Search</Link>
+        <Link href="/sign">Sign In</Link>
       </SLeftWrapper>
     </SNavContainer>
   );
