@@ -3,14 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { theme } from '@src/styles/theme';
+import { LocalStorage } from '@src/utils';
 
 const Nav = () => {
   const headerRef = useRef(null) as React.RefObject<HTMLDivElement>;
+  const isToken = LocalStorage.getItem('token');
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
-      if (headerRef && scrollTop > 0) {
+      if (scrollTop > 0) {
         headerRef.current.style.background = `${theme.colors.deepGrey}`;
       } else {
         headerRef.current.style.background = 'transparent';
@@ -42,7 +44,7 @@ const Nav = () => {
       </SNavListWrapper>
       <SLeftWrapper>
         <Link href="/search">Search</Link>
-        <Link href="/sign">Sign In</Link>
+        <Link href={isToken ? '/mypage' : '/login'}>Account</Link>
       </SLeftWrapper>
     </SNavContainer>
   );
@@ -78,8 +80,4 @@ const SNav = styled.nav`
 const SLeftWrapper = styled.div`
   ${theme.flex}
   gap: 10px;
-`;
-
-const SSearch = styled.div`
-  cursor: pointer;
 `;
