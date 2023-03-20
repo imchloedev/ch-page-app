@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import Seo from '@src/components/common/Seo';
-import useSearch from '@src/hooks/useSearch';
+import { useSearch } from '@src/hooks';
 import { searchInputState } from '@src/atoms/search';
 import { SPostWrapper } from '@src/components/Media';
 import { IContent } from '@src/types/content';
