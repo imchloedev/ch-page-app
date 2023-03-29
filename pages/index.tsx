@@ -65,11 +65,11 @@ const SContents = styled.article`
   padding: 10px 2vw 40px 2vw;
 `;
 
-const SContentsTitle = styled.p`
+export const SContentsTitle = styled.p`
   margin-bottom: 20px;
 `;
 
-const SGuidance = styled.div`
+export const SGuidance = styled.div`
   height: 200px;
   text-align: center;
   line-height: 200px;

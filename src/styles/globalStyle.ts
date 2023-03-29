@@ -62,7 +62,8 @@ const globalStyle = css`
 
   input,
   button,
-  textarea {
+  textarea,
+  select {
     outline: none;
     font-family: 'Lato';
   }
