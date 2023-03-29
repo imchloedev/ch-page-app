@@ -5,11 +5,10 @@ import { LocalStorage } from '@src/utils';
 
 const useGetToken = () => {
   const router = useRouter();
-  return useQuery(['refresh_token'], getRequestToken, {
+  return useQuery(['request_token'], getRequestToken, {
     enabled: false,
     onSuccess: result => {
-      console.log(result);
-      LocalStorage.setItem('token', result?.request_token);
+      LocalStorage.setItem('token', result.request_token);
       router.push('/');
     },
     onError: handleGetError,

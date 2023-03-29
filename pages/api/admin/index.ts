@@ -18,13 +18,9 @@ export const handleGetError = (err: unknown) => {
 };
 
 export const getRequestToken = async () => {
-  try {
-    const { data } = await axios.get(
-      `https://${URL}/authentication/token/new?api_key=${API_KEY}`
-    );
-    localStorage.setItem('token', data.request_token);
-    return data;
-  } catch (err) {
-    handleGetError(err);
-  }
+  const { data } = await axios.get(
+    `https://${URL}/authentication/token/new?api_key=${API_KEY}`
+  );
+  localStorage.setItem('token', data.request_token);
+  return data;
 };

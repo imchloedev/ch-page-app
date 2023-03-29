@@ -6,7 +6,7 @@ import { theme } from '@src/styles/theme';
 import { LocalStorage } from '@src/utils';
 
 const Nav = () => {
-  const headerRef = useRef(null) as React.RefObject<HTMLDivElement>;
+  const headerRef = useRef<any>(null);
   const isToken = LocalStorage.getItem('token');
 
   useEffect(() => {
