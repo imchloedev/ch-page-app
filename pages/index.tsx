@@ -7,8 +7,8 @@ import Main from '@src/components/Main';
 import Media from '@src/components/Media';
 import { getMovies, getTrending, getTvShows } from '@pages/api/media';
 import { viewedListState } from '@src/atoms/recent';
-import { IContent } from '@src/types/content';
 import { filteredViewedListState } from '@src/selectors/recentSelector';
+import { IContent } from '@src/types/content';
 
 export default function Home() {
   const viewedList = useRecoilValue<IContent[]>(viewedListState);
@@ -33,8 +33,6 @@ export default function Home() {
       cacheTime: 50000,
     },
   ]);
-
-  //  console.log(results[2].data.slice(0, 5));
 
   return (
     <>
