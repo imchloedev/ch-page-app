@@ -28,23 +28,9 @@ const Nav = () => {
             <Image src="/images/logo.png" width={80} height={16} alt="logo" />
           </Link>
         </div>
-        <SNav>
-          <ul>
-            <li>
-              <Link href="/movies">Movies</Link>
-            </li>
-            <li>
-              <Link href="/tv-shows">TV Shows</Link>
-            </li>
-            <li>
-              <Link href="my-list">My List</Link>
-            </li>
-          </ul>
-        </SNav>
       </SNavListWrapper>
       <SLeftWrapper>
         <Link href="/search">Search</Link>
-        <Link href={isToken ? '/mypage' : '/login'}>Account</Link>
       </SLeftWrapper>
     </SNavContainer>
   );

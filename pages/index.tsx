@@ -5,8 +5,7 @@ import { useRecoilValue } from 'recoil';
 import Seo from '@src/components/common/Seo';
 import Main from '@src/components/Main';
 import Media from '@src/components/Media';
-import { getMovies, getTvShows } from '@pages/api/media';
-import { getMain } from '@pages/api/mock/index';
+import { getMovies, getTrending, getTvShows } from '@pages/api/media';
 import { viewedListState } from '@src/atoms/recent';
 import { IContent } from '@src/types/content';
 import { filteredViewedListState } from '@src/selectors/recentSelector';
@@ -28,19 +27,21 @@ export default function Home() {
       cacheTime: 50000,
     },
     {
-      queryKey: ['main'],
-      queryFn: getMain,
+      queryKey: ['trending'],
+      queryFn: getTrending,
       staleTime: Infinity,
       cacheTime: 50000,
     },
   ]);
+
+  //  console.log(results[2].data.slice(0, 5));
 
   return (
     <>
       <Seo title="Home">
         <meta name="home" content="movies & tv shows" />
       </Seo>
-      <Main mains={results[2].data} />
+      <Main content={results[2].data} />
       <SContents>
         <SContentsTitle>TV Shows</SContentsTitle>
         <Media content={results[0].data} />

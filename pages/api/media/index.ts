@@ -16,3 +16,10 @@ export const getTvShows = async () => {
   } = await axios.get(`https://${URL}/tv/popular?api_key=${API_KEY}`);
   return results;
 };
+
+export const getTrending = async () => {
+  const {
+    data: { results },
+  } = await axios.get(`https://${URL}/trending/all/day?api_key=${API_KEY}`);
+  return results;
+};
