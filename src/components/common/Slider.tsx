@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Swiper } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar } from 'swiper';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  SwiperOptions,
+} from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -14,22 +19,26 @@ interface ISlideProps {
 const Slider = ({ children }: ISlideProps) => {
   SwiperCore.use([Navigation, Pagination, Scrollbar]);
 
-  const setting = {
-    spaceBetween: 20,
-    slidesPerView: 3.5,
-    breakpoints: {
-      768: {
-        slidesPerView: 4.5,
+  const setting = useMemo<SwiperOptions>(
+    () => ({
+      spaceBetween: 20,
+      slidesPerView: 3.5,
+      breakpoints: {
+        768: {
+          slidesPerView: 4.5,
+        },
+        1200: {
+          slidesPerView: 5.5,
+        },
       },
-      1200: {
-        slidesPerView: 5.5,
+      pagination: {
+        type: 'progressbar',
       },
-    },
-    pagination: {
-      type: 'progressbar',
-    },
-    navigation: true,
-  };
+      navigation: true,
+    }),
+    []
+  );
+
   return (
     <SSlideContainer>
       <Swiper {...setting}>{children}</Swiper>
