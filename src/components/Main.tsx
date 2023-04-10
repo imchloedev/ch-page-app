@@ -7,9 +7,12 @@ import Button from '@src/components/common/Button';
 import { theme } from '@src/styles/theme';
 import InfoIcon from '../../public/icons/info.svg';
 import 'swiper/css';
+import { IContent, IContentList } from '@src/types/content';
 
-const Main = ({ mains }: any) => {
+const Main = ({ content }: IContentList<IContent>) => {
   SwiperCore.use([Autoplay]);
+
+  console.log(content?.slice(0, 5));
 
   const setting = {
     slidesPerView: 1,
@@ -23,25 +26,29 @@ const Main = ({ mains }: any) => {
   return (
     <SMainContainer>
       <Swiper {...setting}>
-        {mains?.main.map((list: any) => (
+        {content?.slice(0, 5).map((list: IContent) => (
           <SwiperSlide key={list.id}>
-            <Link href="/">
-              <SImgWrapper>
-                <img src={list.poster} />
-              </SImgWrapper>
-              <SImgTitleContainer>
-                <img src={list.titleImg} />
-                <p>{list.info}</p>
-                <SBtnContainer>
-                  <Button bgColor="white">
+            <SImgWrapper poster={list.backdrop_path} />
+            <SImgTitleContainer>
+              <h3>{list.title ? list.title : list.name}</h3>
+              <p>{list.overview}</p>
+              <SBtnContainer>
+                <Button bgColor="white">
+                  <Link
+                    href={`/view/${list.title ? 1 : 2}/${
+                      list.title ? 'movie' : 'tv'
+                    }?id=${list.id}&title=${
+                      list.title ? list.title : list.name
+                    }`}
+                  >
                     <SBtnInnerBox>
                       <InfoIcon />
                       More Info
                     </SBtnInnerBox>
-                  </Button>
-                </SBtnContainer>
-              </SImgTitleContainer>
-            </Link>
+                  </Link>
+                </Button>
+              </SBtnContainer>
+            </SImgTitleContainer>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -57,9 +64,14 @@ const SMainContainer = styled.main`
   overflow: hidden;
 `;
 
-export const SImgWrapper = styled.div`
+export const SImgWrapper = styled.div<{ poster: string }>`
   position: relative;
   height: 640px;
+  background: ${({ poster }) =>
+      `url("https://image.tmdb.org/t/p/original/${poster}")`}
+    no-repeat;
+  background-position: top center;
+  background-size: cover;
 
   &::after {
     content: '';
@@ -90,27 +102,32 @@ const SImgTitleContainer = styled.div`
   left: 2vw;
   z-index: 20;
 
-  img {
-    min-width: 5vw;
-    display: block;
+  h3 {
+    font-size: 24px;
   }
 
   p {
     margin-top: 20px;
     width: 50%;
-    height: 5.4em;
+    height: 4.5em;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
-    line-height: 1.8em;
+    line-height: 1.5em;
+    color: ${theme.colors.lightGrey};
+    font-size: 14px;
   }
 `;
 
 const SBtnContainer = styled.div`
   margin-top: 20px;
+
+  a {
+    color: ${theme.colors.black};
+  }
 `;
 
 const SBtnInnerBox = styled.div`
