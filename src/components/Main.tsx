@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
-import SwiperCore, { Autoplay } from 'swiper';
+import SwiperCore, { Autoplay, SwiperOptions } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from '@emotion/styled';
 import Button from '@src/components/common/Button';
@@ -12,14 +12,17 @@ import { IContent, IContentList } from '@src/types/content';
 const Main = ({ content }: IContentList<IContent>) => {
   SwiperCore.use([Autoplay]);
 
-  const setting = {
-    slidesPerView: 1,
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-  };
+  const setting = useMemo<SwiperOptions>(
+    () => ({
+      slidesPerView: 1,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    }),
+    []
+  );
 
   return (
     <SMainContainer>
