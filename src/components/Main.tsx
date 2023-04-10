@@ -12,8 +12,6 @@ import { IContent, IContentList } from '@src/types/content';
 const Main = ({ content }: IContentList<IContent>) => {
   SwiperCore.use([Autoplay]);
 
-  console.log(content?.slice(0, 5));
-
   const setting = {
     slidesPerView: 1,
     loop: true,
@@ -124,6 +122,24 @@ const SImgTitleContainer = styled.div`
 
 const SBtnContainer = styled.div`
   margin-top: 20px;
+
+  button {
+    transition: 0.3s ease-in;
+
+    &:hover {
+      background: ${theme.colors.middleGrey};
+
+      a {
+        color: ${theme.colors.white};
+      }
+
+      svg {
+        path {
+          fill: ${theme.colors.white};
+        }
+      }
+    }
+  }
 
   a {
     color: ${theme.colors.black};

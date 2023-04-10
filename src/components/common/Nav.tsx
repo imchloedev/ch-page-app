@@ -3,11 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { theme } from '@src/styles/theme';
-import { LocalStorage } from '@src/utils';
 
 const Nav = () => {
   const headerRef = useRef<any>(null);
-  const isToken = LocalStorage.getItem('token');
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -22,23 +20,23 @@ const Nav = () => {
 
   return (
     <SNavContainer ref={headerRef}>
-      <SNavListWrapper>
+      <SNavRightWrapper>
         <div>
           <Link href="/">
             <Image src="/images/logo.png" width={80} height={16} alt="logo" />
           </Link>
         </div>
-      </SNavListWrapper>
-      <SLeftWrapper>
+      </SNavRightWrapper>
+      <SNavLeftWrapper>
         <Link href="/search">Search</Link>
-      </SLeftWrapper>
+      </SNavLeftWrapper>
     </SNavContainer>
   );
 };
 
 export default Nav;
 
-const SNavContainer = styled.div`
+const SNavContainer = styled.header`
   ${theme.flex}
   justify-content: space-between;
   position: fixed;
@@ -51,19 +49,12 @@ const SNavContainer = styled.div`
   z-index: 90;
 `;
 
-const SNavListWrapper = styled.div`
+const SNavRightWrapper = styled.div`
   ${theme.flex}
   gap: 30px;
 `;
 
-const SNav = styled.nav`
-  ul {
-    ${theme.flex}
-    gap: 10px;
-  }
-`;
-
-const SLeftWrapper = styled.div`
+const SNavLeftWrapper = styled.div`
   ${theme.flex}
   gap: 10px;
 `;

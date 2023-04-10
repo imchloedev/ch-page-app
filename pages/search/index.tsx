@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import Seo from '@src/components/common/Seo';
+import Spinner from '@src/components/common/Spinner';
 import { useSearch } from '@src/hooks';
 import { searchInputState } from '@src/atoms/search';
 import { SPostWrapper } from '@src/components/Media';
@@ -46,7 +47,9 @@ const SearchPage = () => {
       </SSearchBarContainer>
       <div>
         {isLoading ? (
-          <SNoResultWrapper>Searching...</SNoResultWrapper>
+          <SNoResultWrapper>
+            <Spinner />
+          </SNoResultWrapper>
         ) : data ? (
           data.length > 0 ? (
             <SResultContainer>
