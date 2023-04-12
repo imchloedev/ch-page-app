@@ -1,6 +1,7 @@
 # 영화, TV 프로그램 정보 사이트 - **Mplex**
 
-🔗 [Mplex 보러가기](https://mplex-imchloedev.vercel.app/) (deployed by Vercel)
+- Open API를 활용하여 영화 정보를 검색할 수 있는 사이트
+- 🔗 [Mplex 보러가기](https://mplex-imchloedev.vercel.app/) (deployed by Vercel)
 
 ## 구현 Scope
 
