@@ -50,34 +50,31 @@ const SearchPage = () => {
           <SNoResultWrapper>
             <Spinner />
           </SNoResultWrapper>
-        ) : data ? (
-          data.length > 0 ? (
-            <SResultContainer>
-              {data.map((result: IContent) => (
-                <SPostWrapper key={result.id}>
-                  <Link
-                    href={`/view/${result.title ? 1 : 2}/${
-                      result.title ? 'movie' : 'tv'
-                    }?id=${result.id}&title=${
-                      result.title ? result.title : result.name
-                    }`}
-                  >
-                    <img
-                      src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
-                      alt={result.title ? result.title : result.name}
-                    />
-                  </Link>
-                </SPostWrapper>
-              ))}
-            </SResultContainer>
-          ) : (
-            <SNoResultWrapper>
-              Your search for &quot;{searchInput}&quot; did not match any
-              content.
-            </SNoResultWrapper>
-          )
+        ) : data && data.length > 0 ? (
+          <SResultContainer>
+            {data.map((result: IContent) => (
+              <SPostWrapper key={result.id}>
+                <Link
+                  href={`/view/${result.title ? 1 : 2}/${
+                    result.title ? 'movie' : 'tv'
+                  }?id=${result.id}&title=${
+                    result.title ? result.title : result.name
+                  }`}
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
+                    alt={result.title ? result.title : result.name}
+                  />
+                </Link>
+              </SPostWrapper>
+            ))}
+          </SResultContainer>
         ) : (
-          <SNoResultWrapper>Please type to search.</SNoResultWrapper>
+          <SNoResultWrapper>
+            {searchInput
+              ? `Your search for "${searchInput}" did not match any content.`
+              : 'Please type to search.'}
+          </SNoResultWrapper>
         )}
       </div>
     </SSearchPageLayout>
