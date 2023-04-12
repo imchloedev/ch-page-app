@@ -17,8 +17,8 @@ const Main = ({ content }: IContentList<IContent>) => {
       slidesPerView: 1,
       loop: true,
       autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
+        delay: 4500,
+        pauseOnMouseEnter: true,
       },
     }),
     []
