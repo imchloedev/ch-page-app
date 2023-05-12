@@ -25,6 +25,8 @@ const ViewLayout = ({ media, mediaType }: IViewProps) => {
     };
     window.addEventListener('resize', resizeWindow);
 
+    resizeWindow();
+
     return () => {
       window.removeEventListener('resize', resizeWindow);
     };
