@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import Seo from '@src/components/common/Seo';
 import Spinner from '@src/components/common/Spinner';
 import { useSearch } from '@src/hooks';
-import { searchInputState } from '@src/atoms/search';
+import { searchInputState } from '@src/atoms';
 import { SPostWrapper } from '@src/components/Media';
 import { IContent } from '@src/types/content';
 import { theme } from '@src/styles/theme';

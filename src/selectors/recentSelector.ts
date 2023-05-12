@@ -1,5 +1,5 @@
-import { viewedListState } from '@src/atoms/recent';
 import { selector } from 'recoil';
+import { viewedListState } from '@src/atoms';
 
 export const filteredViewedListState = selector({
   key: 'filteredViewedListState',

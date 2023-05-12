@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import Seo from '@src/components/common/Seo';
 import ViewLayout from '@src/components/ViewLayout';
-import { viewedListState } from '@src/atoms/recent';
+import { viewedListState } from '@src/atoms';
 import { IContent } from '@src/types/content';
 import { MEDIA_TYPE } from '@src/constants';
 import { API_KEY, URL } from '@pages/api/media';
