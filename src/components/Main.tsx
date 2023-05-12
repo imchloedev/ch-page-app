@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import SwiperCore, { Autoplay, SwiperOptions } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from '@emotion/styled';
@@ -29,7 +30,15 @@ const Main = ({ content }: IContentList<IContent>) => {
       <Swiper {...setting}>
         {content?.slice(0, 5).map((list: IContent) => (
           <SwiperSlide key={list.id}>
-            <SImgWrapper poster={list.backdrop_path} />
+            <SImgWrapper>
+              <Image
+                src={`https://image.tmdb.org/t/p/original/${list.backdrop_path}`}
+                alt="dd"
+                fill
+                priority
+                style={{ objectFit: 'cover', objectPosition: 'center 5%' }}
+              />
+            </SImgWrapper>
             <SImgTitleContainer>
               <h3>{list.title ? list.title : list.name}</h3>
               <p>{list.overview}</p>
@@ -63,16 +72,32 @@ const SMainContainer = styled.main`
   position: relative;
   height: 640px;
   overflow: hidden;
+
+  ${theme.mq[4]} {
+    height: 800px;
+  }
+
+  ${theme.mq[5]} {
+    height: 1000px;
+  }
 `;
 
-export const SImgWrapper = styled.div<{ poster: string }>`
+export const SImgWrapper = styled.div`
   position: relative;
+  width: 100%;
   height: 640px;
-  background: ${({ poster }) =>
-      `url("https://image.tmdb.org/t/p/original/${poster}")`}
-    no-repeat;
-  background-position: top center;
-  background-size: cover;
+
+  ${theme.mq[4]} {
+    height: 800px;
+  }
+
+  ${theme.mq[5]} {
+    height: 1000px;
+  }
+
+  img {
+    display: block;
+  }
 
   &::after {
     content: '';
@@ -88,12 +113,6 @@ export const SImgWrapper = styled.div<{ poster: string }>`
       ${theme.colors.deepGrey} 100%
     );
     z-index: 10;
-  }
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;
 

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { useRecoilState } from 'recoil';
 import Star from '../../public/icons/star.svg';
 import { theme } from '@src/styles/theme';
 import { IContent } from '@src/types/content';
 import { MEDIA_TYPE } from '@src/constants';
+import Image from 'next/image';
+import { mqState } from '@src/atoms/mq';
 
 interface IViewProps {
   media: IContent;
@@ -11,16 +14,44 @@ interface IViewProps {
 }
 
 const ViewLayout = ({ media, mediaType }: IViewProps) => {
+  const [mq, setMq] = useRecoilState<number>(mqState);
   const { MOVIE } = MEDIA_TYPE;
   const type = Number(mediaType);
   const isMovie = type === MOVIE;
 
+  useEffect(() => {
+    const resizeWindow = () => {
+      setMq(window.innerWidth);
+    };
+    window.addEventListener('resize', resizeWindow);
+
+    return () => {
+      window.removeEventListener('resize', resizeWindow);
+    };
+  }, []);
+
   return (
     <div>
-      <SPosterWrapper
-        poster={media.poster_path}
-        backdrop={media.backdrop_path}
-      />
+      <SPosterWrapper>
+        {mq > theme.breakpoints[1] ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${media.backdrop_path}`}
+            alt={media.id}
+            fill
+            priority
+            style={{ objectFit: 'cover', objectPosition: 'center 5%' }}
+          />
+        ) : (
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${media.poster_path}`}
+            alt="img"
+            fill
+            priority
+            style={{ objectFit: 'cover', objectPosition: 'center 5%' }}
+          />
+        )}
+      </SPosterWrapper>
+
       <SContentCopy>
         <STitle>{mediaType == MOVIE ? media.title : media.name}</STitle>
         <SSubInfoWrapper>
@@ -46,9 +77,6 @@ const ViewLayout = ({ media, mediaType }: IViewProps) => {
           ))}
         </SGenreWrapper>
         <p>{media.overview}</p>
-        <p>
-          <a href={media.homepage ? media.homepage : '/'}>Go to homepage</a>
-        </p>
       </SContentCopy>
     </div>
   );
@@ -56,22 +84,10 @@ const ViewLayout = ({ media, mediaType }: IViewProps) => {
 
 export default ViewLayout;
 
-const SPosterWrapper = styled.div<{ poster: string; backdrop: string }>`
+const SPosterWrapper = styled.div`
   position: relative;
+  width: 100%;
   height: 640px;
-  background: ${({ poster }) =>
-      `url("https://image.tmdb.org/t/p/original/${poster}")`}
-    no-repeat;
-  background-position: top center;
-  background-size: cover;
-
-  ${theme.mq[1]} {
-    background: ${({ backdrop }) =>
-        `url("https://image.tmdb.org/t/p/original/${backdrop}")`}
-      no-repeat;
-    background-position: center center;
-    background-size: cover;
-  }
 
   &::after {
     content: '';
