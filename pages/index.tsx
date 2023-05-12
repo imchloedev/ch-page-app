@@ -6,7 +6,7 @@ import Seo from '@src/components/common/Seo';
 import Main from '@src/components/Main';
 import Media from '@src/components/Media';
 import { getMovies, getTrending, getTvShows } from '@pages/api/media';
-import { viewedListState } from '@src/atoms/recent';
+import { viewedListState } from '@src/atoms';
 import { filteredViewedListState } from '@src/selectors/recentSelector';
 import { IContent } from '@src/types/content';
 

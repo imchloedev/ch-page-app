@@ -6,7 +6,7 @@ import { theme } from '@src/styles/theme';
 import { IContent } from '@src/types/content';
 import { MEDIA_TYPE } from '@src/constants';
 import Image from 'next/image';
-import { mqState } from '@src/atoms/mq';
+import { mqState } from '@src/atoms';
 
 interface IViewProps {
   media: IContent;
