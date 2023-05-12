@@ -23,7 +23,13 @@ const Nav = () => {
       <SNavRightWrapper>
         <div>
           <Link href="/">
-            <Image src="/images/logo.png" width={80} height={16} alt="logo" />
+            <Image
+              src="/images/logo.png"
+              width={80}
+              height={16}
+              alt="logo"
+              priority
+            />
           </Link>
         </div>
       </SNavRightWrapper>

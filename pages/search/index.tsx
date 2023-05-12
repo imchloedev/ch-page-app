@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import Seo from '@src/components/common/Seo';
@@ -61,9 +62,11 @@ const SearchPage = () => {
                     result.title ? result.title : result.name
                   }`}
                 >
-                  <img
+                  <Image
                     src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
-                    alt={result.title ? result.title : result.name}
+                    alt={result.id}
+                    width={300}
+                    height={300}
                   />
                 </Link>
               </SPostWrapper>

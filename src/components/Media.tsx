@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { SwiperSlide } from 'swiper/react';
 import styled from '@emotion/styled';
 import Slider from '@src/components/common/Slider';
@@ -16,9 +17,12 @@ const Media = ({ content }: IContentList<IContent>) => {
                 ctn.title ? 'movie' : 'tv'
               }?id=${ctn.id}&title=${ctn.title ? ctn.title : ctn.name}`}
             >
-              <img
+              <Image
                 src={`https://image.tmdb.org/t/p/original/${ctn.poster_path}`}
-                alt={ctn.title ? ctn.title : ctn.name}
+                alt={ctn.id}
+                width={300}
+                height={300}
+                sizes="(max-width: 768px) 10vw, 768px"
               />
             </Link>
           </SPostWrapper>

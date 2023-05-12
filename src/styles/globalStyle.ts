@@ -7,12 +7,14 @@ const globalStyle = css`
     font-weight: 300;
     font-style: normal;
     src: url('/fonts/Lato-Light.ttf') format('truetype');
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Lato';
     font-weight: 400;
     src: url('/fonts/Lato-Regular.ttf') format('truetype');
+    font-display: swap;
   }
 
   @font-face {
@@ -20,6 +22,7 @@ const globalStyle = css`
     font-weight: 700;
     font-style: normal;
     src: url('/fonts/Lato-Bold.ttf') format('truetype');
+    font-display: swap;
   }
 
   @font-face {
@@ -27,6 +30,7 @@ const globalStyle = css`
     font-weight: 800;
     font-style: normal;
     src: url('/fonts/Lato-Black.ttf') format('truetype');
+    font-display: swap;
   }
 
   * {
