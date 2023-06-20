@@ -10,6 +10,7 @@ import { searchInputState } from '@src/atoms';
 import { SPostWrapper } from '@src/components/Media';
 import { IContent } from '@src/types/content';
 import { theme } from '@src/styles/theme';
+import { useHost } from '@src/hooks/useHost';
 import Reset from '../../public/icons/close.svg';
 import Search from '../../public/icons/search.svg';
 
@@ -18,6 +19,7 @@ const SearchPage = () => {
     useRecoilState<string>(searchInputState);
   const resetSearchInput = useResetRecoilState(searchInputState);
   const { data, isLoading } = useSearch(searchInput);
+  const host = useHost();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -26,9 +28,12 @@ const SearchPage = () => {
 
   return (
     <SSearchPageLayout>
-      <Seo title="Search">
-        <meta name="search" content="search" />
-      </Seo>
+      <Seo
+        title="Search"
+        pageType="search"
+        hostName={host}
+        description="search"
+      />
       <SSearchBarContainer>
         <input
           type="text"

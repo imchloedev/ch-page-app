@@ -9,10 +9,13 @@ import { getMovies, getTrending, getTvShows } from '@pages/api/media';
 import { viewedListState } from '@src/atoms';
 import { filteredViewedListState } from '@src/selectors/recentSelector';
 import { IContent } from '@src/types/content';
+import { useHost } from '@src/hooks/useHost';
 
 export default function Home() {
   const viewedList = useRecoilValue<IContent[]>(viewedListState);
   const filteredViewedList = useRecoilValue(filteredViewedListState);
+  const host = useHost();
+
   const results = useQueries([
     {
       queryKey: ['tvShows'],
@@ -36,9 +39,12 @@ export default function Home() {
 
   return (
     <>
-      <Seo title="Home">
-        <meta name="home" content="movies & tv shows" />
-      </Seo>
+      <Seo
+        title="Home"
+        pageType={'home'}
+        hostName={host}
+        description={'mplex movies and tv shows'}
+      />
       <Main content={results[2].data} />
       <SContents>
         <SContentsTitle>TV Shows</SContentsTitle>
