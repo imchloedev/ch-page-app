@@ -8,6 +8,7 @@ import { viewedListState } from '@src/atoms';
 import { IContent } from '@src/types/content';
 import { MEDIA_TYPE } from '@src/constants';
 import { API_KEY, URL } from '@pages/api/media';
+import { useHost } from '@src/hooks/useHost';
 
 export interface IViewPgProps {
   title: string;
@@ -18,6 +19,7 @@ export interface IViewPgProps {
 const ViewPage = ({ mediaType, title, media }: IViewPgProps) => {
   const [viewedList, setViewedList] =
     useRecoilState<IContent[]>(viewedListState);
+  const host = useHost();
 
   useEffect(() => {
     setViewedList([media, ...viewedList]);
@@ -25,9 +27,12 @@ const ViewPage = ({ mediaType, title, media }: IViewPgProps) => {
 
   return (
     <div>
-      <Seo title={title}>
-        <meta name="info" content={title} />
-      </Seo>
+      <Seo
+        title={title}
+        pageType="video"
+        hostName={host}
+        description={media.overview}
+      />
       <ViewLayout media={media} mediaType={mediaType} />
     </div>
   );

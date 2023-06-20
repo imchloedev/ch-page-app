@@ -3,17 +3,23 @@ import Head from 'next/head';
 
 interface IProps {
   title: string;
-  children: React.ReactNode;
+  pageType: string;
+  hostName: string;
+  description: string;
 }
 
 const Seo = (props: IProps) => {
-  const { title, children } = props;
+  const { title, pageType, hostName, description } = props;
 
   return (
     <Head>
       <title>{title}</title>
-      <meta property="mplex:pageType" content={title} />
-      {children}
+      <meta name="description" content={description} />
+      <meta property="og:site_name" content="MPLEX" />
+      <meta property="mplex:pageType" content={pageType} />
+      <meta property="og:title" content={title} />
+      <meta property="og:url" content={hostName} />
+      <meta property="og:description" content={description} />
     </Head>
   );
 };
